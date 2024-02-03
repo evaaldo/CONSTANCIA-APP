@@ -7,9 +7,9 @@ export class UserController {
 
     async getAllUsers(request: Request, response: Response) {
 
-        const user = await userService.getAllUsers()
+        const users = await userService.getAllUsers()
 
-        return response.status(200).json({ user })
+        return response.status(200).json({ users })
 
     }
 

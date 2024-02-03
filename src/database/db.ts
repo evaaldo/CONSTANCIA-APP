@@ -8,7 +8,7 @@ export const sql = postgres({
   database: PGDATABASE,
   username: PGUSER,
   password: PGPASSWORD,
-  port: 8080,
+  port: 5432,
   ssl: 'require',
   connection: {
     options: `project=${ENDPOINT_ID}`,
