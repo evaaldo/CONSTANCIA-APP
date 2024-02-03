@@ -30,7 +30,7 @@ export class UserController {
 
         await userService.updateUser(userId, user.username, user.password)
 
-        return response.status(204).json({ message: "User updated!" })
+        return response.status(200).json({ message: "User updated!" })
 
     }
 
@@ -40,7 +40,7 @@ export class UserController {
 
         await userService.deleteUser(userId)
 
-        return response.status(204).json({ message: "User deleted!" })
+        return response.status(200).json({ message: "User deleted!" })
 
     }
 

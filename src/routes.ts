@@ -12,5 +12,5 @@ router.get('/', (request: Request, response: Response) => {return response.statu
 
 router.get('/users', userController.getAllUsers)
 router.post('/users', userController.createUser)
-router.put('/users', userController.updateUser)
-router.delete('/users', userController.deleteUser)
+router.put('/users/:id', userController.updateUser)
+router.delete('/users/:id', userController.deleteUser)

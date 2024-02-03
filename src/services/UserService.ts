@@ -20,9 +20,13 @@ export class UserService {
 
     async updateUser(userId: string, username: string, password: string) {
 
+        await sql`UPDATE users SET username=${username}, password=${password} WHERE userId=${userId}`
+
     }
 
     async deleteUser(userId: string) {
+
+        await sql`DELETE FROM users WHERE userId=${userId}`
 
     }
 
