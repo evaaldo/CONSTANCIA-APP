@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express'
 import { UserController } from './controllers/UserController'
 import { AuthController } from './controllers/AuthController'
+import { verifyAuth } from './middlewares/verifyAuth'
 
 export const router = Router()
 
@@ -13,11 +14,11 @@ router.get('/', (request: Request, response: Response) => {return response.statu
 
 // Authentication Route
 
-router.post('/users/auth/:id', authController.getToken)
+router.post('/users/auth', authController.getToken)
 
 // User Routes
 
-router.get('/users', userController.getAllUsers)
+router.get('/users', verifyAuth, userController.getAllUsers)
 router.post('/users', userController.createUser)
 router.put('/users/:id', userController.updateUser)
 router.delete('/users/:id', userController.deleteUser)
