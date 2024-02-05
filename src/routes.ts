@@ -2,11 +2,13 @@ import { Router, Request, Response } from 'express'
 import { UserController } from './controllers/UserController'
 import { AuthController } from './controllers/AuthController'
 import { verifyAuth } from './middlewares/verifyAuth'
+import { TaskController } from './controllers/TaskController'
 
 export const router = Router()
 
 const userController = new UserController()
 const authController = new AuthController()
+const taskController = new TaskController()
 
 // Public Route
 
@@ -22,3 +24,7 @@ router.get('/users', verifyAuth, userController.getAllUsers)
 router.post('/users', userController.createUser)
 router.put('/users/:id', userController.updateUser)
 router.delete('/users/:id', userController.deleteUser)
+
+// Task Routes
+
+router.get('/tasks/:id', verifyAuth, taskController.getAllTasksByUser)
