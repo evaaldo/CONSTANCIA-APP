@@ -21,7 +21,7 @@ export class AuthController {
 
         if(token !== null) {
 
-            request.session.user = token
+            request.session.user = user.username
 
             console.log(`Sua sessão é: ${request.session.user}`)
 
