@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { TaskService } from '../services/TaskService'
 
-    const taskService = new TaskService()
+const taskService = new TaskService()
 
 export class TaskController {
 
