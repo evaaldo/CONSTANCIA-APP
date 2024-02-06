@@ -29,3 +29,5 @@ router.delete('/users/:id', userController.deleteUser)
 
 router.get('/tasks', verifyAuth, taskController.getAllTasksByUser)
 router.post('/tasks', verifyAuth, taskController.createTaskByUser)
+router.put('/tasks', verifyAuth, taskController.updateTask)
+router.delete('/tasks', verifyAuth, taskController.deleteTask)
