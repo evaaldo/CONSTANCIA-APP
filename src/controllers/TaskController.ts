@@ -66,6 +66,8 @@ export class TaskController {
 
         const task = request.body
 
+        await taskService.updateTask(task.taskname, task.newTaskname, task.description)
+
         try {
 
             return response.status(200).json({ message: "Task updated!" })
