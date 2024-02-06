@@ -9,23 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthController = void 0;
-const AuthService_1 = require("../services/AuthService");
-const authService = new AuthService_1.AuthService();
-class AuthController {
-    getToken(request, response) {
+exports.TaskService = void 0;
+const db_1 = require("../database/db");
+class TaskService {
+    getAllTasksByUser(username) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = request.body;
-            const token = yield authService.getToken(user.username, user.password);
-            if (token !== null) {
-                request.session.user = user.username;
-                console.log(`Sua sessão é: ${request.session.user}`);
-                return response.status(200).json(token);
-            }
-            else {
-                return response.status(404).json({ message: "Your credentials are incorrect!" });
-            }
+            const tasks = yield (0, db_1.sql) `SELECT * FROM tasks WHERE username=${username}`;
+            return tasks;
+        });
+    }
+    createTaskByUser(username, taskname, description) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const taskId = crypto.randomUUID();
+            yield (0, db_1.sql) `INSERT INTO tasks (taskId, taskname, description, username) VALUES (${taskId}, ${taskname}, ${description}, ${username})`;
         });
     }
 }
-exports.AuthController = AuthController;
+exports.TaskService = TaskService;
