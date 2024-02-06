@@ -44,4 +44,38 @@ export class TaskController {
 
     }
 
+    async deleteTask(request: Request, response: Response) {
+
+        const task = request.body
+
+        await taskService.deleteTask(task.taskname)
+
+        try {
+
+            return response.status(200).json({ message: "Task deleted!" })
+
+        } catch(error) {
+
+            return error
+
+        }
+
+    }
+
+    async updateTask(request: Request, response: Response) {
+
+        const task = request.body
+
+        try {
+
+            return response.status(200).json({ message: "Task updated!" })
+
+        } catch(error) {
+
+            return error
+
+        }
+
+    }
+
 }

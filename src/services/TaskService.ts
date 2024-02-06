@@ -18,4 +18,16 @@ export class TaskService {
 
     }
 
+    async deleteTask(taskname: string) {
+
+        await sql`DELETE FROM tasks WHERE taskname=${taskname}`
+
+    }
+
+    async updateTask(taskname: string, newTaskname: string, description: string) {
+        
+        await sql`UPDATE tasks SET taskname=${newTaskname}, description=${description} WHERE taskname=${taskname}`
+
+    }
+
 }

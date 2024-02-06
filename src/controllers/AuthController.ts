@@ -23,9 +23,9 @@ export class AuthController {
 
             request.session.user = user.username
 
-            console.log(`Sua sessão é: ${request.session.user}`)
+            console.log(`Sessão iniciada: ${request.session.user}`)
 
-            return response.status(200).json( token )
+            return response.status(200).json({ token: token })
 
         } else {
 
