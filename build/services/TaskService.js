@@ -24,5 +24,15 @@ class TaskService {
             yield (0, db_1.sql) `INSERT INTO tasks (taskId, taskname, description, username) VALUES (${taskId}, ${taskname}, ${description}, ${username})`;
         });
     }
+    deleteTask(taskname) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield (0, db_1.sql) `DELETE FROM tasks WHERE taskname=${taskname}`;
+        });
+    }
+    updateTask(taskname, newTaskname, description) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield (0, db_1.sql) `UPDATE tasks SET taskname=${newTaskname}, description=${description} WHERE taskname=${taskname}`;
+        });
+    }
 }
 exports.TaskService = TaskService;

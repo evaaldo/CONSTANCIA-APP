@@ -22,3 +22,5 @@ exports.router.delete('/users/:id', userController.deleteUser);
 // Task Routes
 exports.router.get('/tasks', verifyAuth_1.verifyAuth, taskController.getAllTasksByUser);
 exports.router.post('/tasks', verifyAuth_1.verifyAuth, taskController.createTaskByUser);
+exports.router.put('/tasks', verifyAuth_1.verifyAuth, taskController.updateTask);
+exports.router.delete('/tasks', verifyAuth_1.verifyAuth, taskController.deleteTask);

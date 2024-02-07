@@ -19,8 +19,8 @@ class AuthController {
             const token = yield authService.getToken(user.username, user.password);
             if (token !== null) {
                 request.session.user = user.username;
-                console.log(`Sua sessão é: ${request.session.user}`);
-                return response.status(200).json(token);
+                console.log(`Sessão iniciada: ${request.session.user}`);
+                return response.status(200).json({ token: token });
             }
             else {
                 return response.status(404).json({ message: "Your credentials are incorrect!" });

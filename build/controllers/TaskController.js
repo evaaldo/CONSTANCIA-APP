@@ -39,5 +39,29 @@ class TaskController {
             }
         });
     }
+    deleteTask(request, response) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const task = request.body;
+            yield taskService.deleteTask(task.taskname);
+            try {
+                return response.status(200).json({ message: "Task deleted!" });
+            }
+            catch (error) {
+                return error;
+            }
+        });
+    }
+    updateTask(request, response) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const task = request.body;
+            yield taskService.updateTask(task.taskname, task.newTaskname, task.description);
+            try {
+                return response.status(200).json({ message: "Task updated!" });
+            }
+            catch (error) {
+                return error;
+            }
+        });
+    }
 }
 exports.TaskController = TaskController;
